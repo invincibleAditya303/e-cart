@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 const allowedOrigins = [
   'http://localhost:3000', // Local development
-  'https://clothing-e-commerce-two.vercel.app', // Production domain
+  'https://e-cart-one-rho.vercel.app', // Production domain
 ]
 
 const corsOptions = {
