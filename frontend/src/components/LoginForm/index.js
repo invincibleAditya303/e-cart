@@ -123,11 +123,11 @@ class LoginForm extends Component {
                     <button type="submit" className="login-button">
                         Login
                     </button>
-                    <Link to='/register'>
-                      <button type="button" className="login-button">
+                      <button type="button" className='login-button'>
+                        <Link to='/register' className="login-button">
                           Register
+                        </Link>
                       </button>
-                    </Link>
                     {showSubmitError && <p className="error-message">*{errorMsg}</p>}
                     </form>
                 </div>
