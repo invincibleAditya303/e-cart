@@ -47,7 +47,7 @@ class ProductItemDetails extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const jwtToken = Cookies.get('jwt_token')
+    const jwtToken = Cookies.get('userDetails')
     const apiUrl = `${process.env.REACT_APP_API_URL}/api/products/${id}`
     const options = {
       headers: {
