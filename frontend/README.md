@@ -116,4 +116,6 @@ e-cart/
 
 ```
 
-## Screenshots
+## Sample Login
+email: john123@gmail.com
+password: John@123
