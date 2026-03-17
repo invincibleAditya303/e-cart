@@ -52,8 +52,8 @@ class App extends Component {
     }
 
     const response = await fetch(apiUrl, options)
-    const action = await response.json()
-    console.log(action)
+    await response.json()
+
     window.location.reload()
     
   }
@@ -70,8 +70,8 @@ class App extends Component {
     }
   
     const response = await fetch(apiUrl, options)
-    const action = await response.json()
-    console.log(action)
+    await response.json()
+   
     window.location.reload()
   }
 
@@ -85,7 +85,7 @@ class App extends Component {
 
     const response = await fetch(apiUrl, options)
     if (response.ok) {
-      console.log('Cart item deleted')
+      
       window.location.reload()
     }
     
@@ -103,8 +103,8 @@ class App extends Component {
     }
 
     const response = await fetch(apiUrl, options)
-    const data = await response.json()
-    console.log(data)
+    await response.json()
+   
     window.location.reload()
     
   }
@@ -121,8 +121,8 @@ class App extends Component {
     }
 
     const response = await fetch(apiUrl, options)
-    const action = await response.json()
-    console.log(action)
+    await response.json()
+   
     window.location.reload()
   }
 

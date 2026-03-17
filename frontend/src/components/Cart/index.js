@@ -11,8 +11,7 @@ const Cart = () => (
   <CartContext.Consumer>
     {value => {
       const {cartList, removeAllCartItems} = value
-      console.log(cartList)
-      console.log("CartListView render – cartList:", cartList, Array.isArray(cartList))
+
       const showEmptyView = cartList.length === 0
 
       const onClickRemoveAll = () => removeAllCartItems()

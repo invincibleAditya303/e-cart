@@ -21,7 +21,7 @@ class LoginForm extends Component {
 
   onSubmitSuccess = () => {
     const {history} = this.props
-    console.log(history)
+ 
     history.replace('/')
   }
 
@@ -44,7 +44,6 @@ class LoginForm extends Component {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    console.log(data.success)
     
     if (data.success) {
       this.onSubmitSuccess()
@@ -96,7 +95,6 @@ class LoginForm extends Component {
   render() {
     
             const {showSubmitError, errorMsg} = this.state
-
 
             return (
                 <div className="login-form-container">
