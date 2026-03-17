@@ -138,7 +138,7 @@ exports.logout = async (request, response) => {
     try {
         response.clearCookie('token', {
             httpOnly: true,
-            sameSite: process.env.NODE_ENV === 'prodcution'? 'none' : 'lax',
+            sameSite: process.env.NODE_ENV === 'production'? 'none' : 'lax',
             secure: process.env.NODE_ENV === 'production'
         })
 
