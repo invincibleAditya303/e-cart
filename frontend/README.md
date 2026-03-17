@@ -15,21 +15,21 @@ On the backend, it uses secure user authentication (JWT) and persists data in Mo
 
 ## Tech Stack
 
-### Frontend
-- React.js
-- React Router
-- Fetch API
-
-### Backend
-- Node.js
-- Express.js
-- MongoDB + Mongoose
-
-### Security
-- JWT Authentication
-- HTTP-only Cookies
-- CORS Configuration
-- Input validation
+  ### Frontend
+  - React.js
+  - React Router
+  - Fetch API
+  
+  ### Backend
+  - Node.js
+  - Express.js
+  - MongoDB + Mongoose
+  
+  ### Security
+  - JWT Authentication
+  - HTTP-only Cookies
+  - CORS Configuration
+  - Input validation
 
 ## Run the application
   ### Start backend server:
@@ -152,8 +152,8 @@ e-cart/
 
 
 ## Sample Login
-email: john123@gmail.com
-password: John@123
+  email: john123@gmail.com
+  password: John@123
 
 ## Security Practices
 - HTTP-only cookies
