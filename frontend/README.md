@@ -4,6 +4,8 @@ built with the MERN stack. It allows registered users  to browse products,
 filter/search, add items to a cart, and checkout(disabled). 
 On the backend, it uses secure user authentication (JWT) and persists data in MongoDB via Mongoose.
 
+---
+
 ## Features
 - User registration and login (with secure password hashing)
 - User authentication and session management (JWT + HTTP-only cookies)
@@ -12,6 +14,8 @@ On the backend, it uses secure user authentication (JWT) and persists data in Mo
 - Simple, functional frontend UI — minimal styling required, focus on functionality and flow.
 - REST API with Express.js.
 - Secure cookie handling.
+
+---
 
 ## Tech Stack
 
@@ -31,6 +35,8 @@ On the backend, it uses secure user authentication (JWT) and persists data in Mo
   - CORS Configuration
   - Input validation
 
+---
+
 ## Run the application
   ### Start backend server:
     - cd backend
@@ -39,6 +45,8 @@ On the backend, it uses secure user authentication (JWT) and persists data in Mo
   ### Start frontend:
     - cd frontend
     - npm start
+
+---
 
 ## Project Structure
 ```
@@ -134,6 +142,8 @@ e-cart/
         ├── reportWebVitals.js
         └── setupTests.js
 
+---
+
 ```
 
 ## Authentication Flow
@@ -141,6 +151,8 @@ e-cart/
 2. Server generates JWT
 3. JWT stored in HTTP-only cookie
 4. Frontend send requests with `credentials: include`
+
+---
 
 ## Screenshots
 <img width="1366" height="671" alt="Screenshot 2026-03-15 015820" src="https://github.com/user-attachments/assets/2ade9ea4-47c1-4479-a935-44efd220078e" />
@@ -150,10 +162,16 @@ e-cart/
 <img width="1366" height="667" alt="Screenshot 2026-03-15 015657" src="https://github.com/user-attachments/assets/3498697b-c0cf-4123-82ed-becc24aa2fd6" />
 <img width="1366" height="679" alt="Screenshot 2026-03-15 015555" src="https://github.com/user-attachments/assets/73247437-7e9e-4bdb-a387-2ea8d81a01da" />
 
+---
+
 
 ## Sample Login
+```
   email: john123@gmail.com
   password: John@123
+```
+
+---
 
 ## Security Practices
 - HTTP-only cookies
@@ -162,6 +180,8 @@ e-cart/
 - MongoDB query sanitization
 - CORS configured with credentials
 - Environment-based cookie settings
+
+---
 
 ## Future Improvements
 - Order management
