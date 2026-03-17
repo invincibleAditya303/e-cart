@@ -1,15 +1,35 @@
-# e-cart App
+# e-Cart App
 This project is a full-stack e-commerce web application for a fictional clothing brand, 
 built with the MERN stack. It allows registered users  to browse products, 
 filter/search, add items to a cart, and checkout(disabled). 
 On the backend, it uses secure user authentication (JWT) and persists data in MongoDB via Mongoose.
 
-# Features
+## Features
 - User registration and login (with secure password hashing)
-- JWT-based authentication and session management (via cookies)
+- User authentication and session management (JWT + HTTP-only cookies)
 - Product browsing: listing, viewing product details.
 - Product search and filtering (by size, category, price, etc.)
 - Simple, functional frontend UI — minimal styling required, focus on functionality and flow.
+- REST API with Express.js.
+- Secure cookie handling.
+
+## Tech Stack
+
+### Frontend
+- React.js
+- React Router
+- Fetch API
+
+### Backend
+- Node.js
+- Express.js
+- MongoDB + Mongoose
+
+### Security
+- JWT Authentication
+- HTTP-only Cookies
+- CORS Configuration
+- Input validation
 
 ## Run the application
   ### Start backend server:
@@ -116,6 +136,34 @@ e-cart/
 
 ```
 
+## Authentication Flow
+1. User logs in
+2. Server generates JWT
+3. JWT stored in HTTP-only cookie
+4. Frontend send requests with `credentials: include`
+
+## Screenshots
+<img width="1366" height="671" alt="Screenshot 2026-03-15 015820" src="https://github.com/user-attachments/assets/2ade9ea4-47c1-4479-a935-44efd220078e" />
+<img width="1366" height="679" alt="Screenshot 2026-03-15 015802" src="https://github.com/user-attachments/assets/3ccc9647-95d6-4961-bb66-aea968c01e46" />
+<img width="1366" height="675" alt="Screenshot 2026-03-15 015746" src="https://github.com/user-attachments/assets/846121bb-0169-4460-88ea-6ef17a10c9cc" />
+<img width="1366" height="673" alt="Screenshot 2026-03-15 015733" src="https://github.com/user-attachments/assets/4471088d-d4f2-4ff6-8170-f8585cc82c9f" />
+<img width="1366" height="667" alt="Screenshot 2026-03-15 015657" src="https://github.com/user-attachments/assets/3498697b-c0cf-4123-82ed-becc24aa2fd6" />
+<img width="1366" height="679" alt="Screenshot 2026-03-15 015555" src="https://github.com/user-attachments/assets/73247437-7e9e-4bdb-a387-2ea8d81a01da" />
+
+
 ## Sample Login
 email: john123@gmail.com
 password: John@123
+
+## Security Practices
+- HTTP-only cookies
+- JWT verification middleware
+- Input validation for all APIs
+- MongoDB query sanitization
+- CORS configured with credentials
+- Environment-based cookie settings
+
+## Future Improvements
+- Order management
+- Product reviews
+- Responsive UI enhancements
