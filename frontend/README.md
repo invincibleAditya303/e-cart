@@ -1,70 +1,121 @@
-# Getting Started with Create React App
+# e-cart App
+This project is a full-stack e-commerce web application for a fictional clothing brand, 
+built with the MERN stack. It allows registered users  to browse products, 
+filter/search, add items to a cart, and checkout(disabled). 
+On the backend, it uses secure user authentication (JWT) and persists data in MongoDB via Mongoose.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Features
+- User registration and login (with secure password hashing)
+- JWT-based authentication and session management (via cookies)
+- Product browsing: listing, viewing product details.
+- Product search and filtering (by size, category, price, etc.)
+- Simple, functional frontend UI — minimal styling required, focus on functionality and flow.
 
-## Available Scripts
+## Run the application
+  ### Start backend server:
+    - cd backend
+    - npm run dev
 
-In the project directory, you can run:
+  ### Start frontend:
+    - cd frontend
+    - npm start
 
-### `npm start`
+## Project Structure
+```
+e-cart/
+├── backend/
+│   ├── .gitignore
+│   ├── app.http
+│   ├── config/
+│   │   └── db.js
+│   ├── controllers/
+│   │   ├── authController.js
+│   │   ├── cartController.js
+│   │   └── productController.js
+│   ├── middleware/
+│   │   └── authMiddleware.js
+│   ├── models/
+│   │   ├── Cart.js
+│   │   ├── Product.js
+│   │   └── User.js
+│   ├── node_modules/
+│   │   
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── routes/
+│   │   ├── authRoutes.js
+│   │   ├── cartRoutes.js
+│   │   └── productRoutes.js
+│   ├── seedProducts.js
+│   └── server.js
+└── frontend/
+    ├── .env.prodcution
+    ├── .gitignore
+    ├── package-lock.json
+    ├── package.json
+    ├── public/
+    │   ├── favicon.ico
+    │   ├── index.html
+    │   ├── logo192.png
+    │   ├── logo512.png
+    │   ├── manifest.json
+    │   └── robots.txt
+    ├── README.md
+    └── src/
+        ├── App.css
+        ├── App.js
+        ├── App.test.js
+        ├── components/
+        │   ├── AllProducts/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── Cart/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── CartItem/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── CartListView/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── CartSummary/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── EmptyCartView/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── FiltersGroup/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── Header/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── LoginForm/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── ProductCard/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── ProductItemDetails/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── ProductsHeader/
+        │   │   ├── index.css
+        │   │   └── index.js
+        │   ├── ProtectedRoute/
+        │   │   └── index.js
+        │   └── RegisterForm/
+        │       ├── index.css
+        │       └── index.js
+        ├── context/
+        │   └── CartContext.js
+        ├── index.css
+        ├── index.js
+        ├── reportWebVitals.js
+        └── setupTests.js
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Sample Login
+email: john123@gmail.com
+password: John@123
