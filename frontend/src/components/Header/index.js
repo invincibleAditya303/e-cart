@@ -1,6 +1,4 @@
 import {Link, withRouter} from 'react-router-dom'
-import Cookies from 'js-cookie'
-import { MdLogin } from "react-icons/md"
 import { IoMdPower } from "react-icons/io"
 
 import CartContext from '../../context/CartContext'
@@ -8,17 +6,23 @@ import CartContext from '../../context/CartContext'
 import './index.css'
 
 const Header = () => {
-  const onClickLogout = () => {
-    Cookies.remove('userDetails')
+  const onClickLogout = async () => {
+    const apiUrl = `${process.env.REACT_APP_API_URL}/api/auth/logout`
+    const options = {
+      method: 'POST',
+      credentials: 'include'
+    }
+
+    await fetch(apiUrl, options)
     window.location.reload()
   }
 
-  const jwtToken = Cookies.get('userDetails')
 
   const renderCartItemsCount = () => (
     <CartContext.Consumer>
       {value => {
         const {cartList} = value
+      
         const cartItemsCount = cartList.length
 
         return (
@@ -44,25 +48,15 @@ const Header = () => {
             />
           </Link>
 
-          {jwtToken && 
-            <button
-              type="button"
-              className="nav-mobile-btn"
-              onClick={onClickLogout}
-            >
-              <IoMdPower size={26} />
-            </button>}
-            {!jwtToken && 
-            <Link to='/login'>
-              <button
-                type="button"
-                className="nav-mobile-btn"
-              >
-                <MdLogin size={26} />
-              </button>
-            </Link>}
+          
+          <button
+            type="button"
+            className="nav-mobile-btn"
+            onClick={onClickLogout}
+          >
+            <IoMdPower size={26} />
+          </button>
         </div>
-
         <div className="nav-bar-large-container">
           <Link to="/">
             <img
@@ -85,22 +79,13 @@ const Header = () => {
               </Link>
             </li>
           </ul>
-          {jwtToken && <button
+          <button
             type="button"
             className="logout-desktop-btn"
             onClick={onClickLogout}
           >
             Logout
-          </button>}
-          {!jwtToken && 
-            <Link to='/login'>
-              <button
-                type="button"
-                className="logout-desktop-btn"
-              >
-                Login
-              </button>
-          </Link>}
+          </button>
         </div>
       </div>
       <div className="nav-menu-mobile">

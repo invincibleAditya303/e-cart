@@ -11,11 +11,14 @@ const userSchema = new mongoose.Schema({
         required: true,
         unique: true,
         lowercase: true,
-        trim: true
+        trim: true,
+        match: [/^\S+@\S+\.\S+$/, 'Please use a valid email']
     },
     password: {
         type: String,
-        required: true
+        minlength: 6,
+        required: true,
+        select: false
     },
     role: {
         type: String,
@@ -23,7 +26,8 @@ const userSchema = new mongoose.Schema({
         default: 'user'
     }
 }, {
-    timestamps: true
+    timestamps: true,
+    strict: true
 })
 
 const User = mongoose.model('User', userSchema)

@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import {RingLoader} from 'react-spinners'
-import Cookies from 'js-cookie'
 
 import Header from '../Header'
 import FiltersGroup from '../FiltersGroup'
@@ -8,7 +7,6 @@ import ProductCard from '../ProductCard'
 import ProductsHeader from '../ProductsHeader'
 
 import './index.css'
-import { Redirect } from 'react-router-dom'
 
 const categoryOptions = [
   {
@@ -120,26 +118,25 @@ class AllProductsSection extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const jwtToken = Cookies.get('userDetails')
+
     const {activeOptionId, activeCategoryId, searchInput, activeSizeId} =
       this.state
     let activeSize = ''
     let activeCategory = ''
     if (activeSizeId !== '') activeSize = sizesList.filter(size => size.sizeId === activeSizeId)[0].size
     if (activeCategoryId !== '') activeCategory = categoryOptions.filter(category => category.categoryId === activeCategoryId)[0].name
-    console.log(process.env.REACT_APP_API_URL)
+    
     const apiUrl = `${process.env.REACT_APP_API_URL}/api/products?sort_by=${activeOptionId}&category=${activeCategory}&search=${searchInput}&size=${activeSize}`
     const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
       method: 'GET',
+      credentials: 'include'
     }
     const response = await fetch(apiUrl, options)
-    console.log(response)
+  
     if (response.ok) {
       const fetchedData = await response.json()
-      const updatedData = fetchedData.map(product => ({
+      
+      const updatedData = fetchedData.products.map(product => ({
         name: product.name,
         description: product.description,
         price: product.price,
@@ -187,7 +184,8 @@ class AllProductsSection extends Component {
 
   renderProductsListView = () => {
     const {productsList, activeOptionId} = this.state
-    const shouldShowProductsList = productsList.length > 0
+    
+    const shouldShowProductsList = productsList?.length > 0
 
     return shouldShowProductsList ? (
       <div className="all-products-container">
@@ -198,7 +196,7 @@ class AllProductsSection extends Component {
           changeSortby={this.changeSortby}
         />
         <ul className="products-list">
-          {productsList.map(product => (
+          {productsList?.map(product => (
             <ProductCard productData={product} key={product._id} />
           ))}
         </ul>
@@ -262,12 +260,6 @@ class AllProductsSection extends Component {
 
   render() {
     const {activeCategoryId, searchInput, activeSizeId} = this.state
-    const jwtToken = Cookies.get('userDetails')
-    console.log(jwtToken)
-
-    if (!jwtToken) {
-      <Redirect to='/login' />
-    }
 
     return (
       <div className="all-products-section">

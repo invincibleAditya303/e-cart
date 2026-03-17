@@ -1,5 +1,4 @@
 import {Component} from 'react'
-import Cookies from 'js-cookie'
 
 import './index.css'
 import { Link } from 'react-router-dom'
@@ -20,12 +19,9 @@ class LoginForm extends Component {
     this.setState({password: event.target.value})
   }
 
-  onSubmitSuccess = jwtToken => {
+  onSubmitSuccess = () => {
     const {history} = this.props
-
-    Cookies.set('userDetails', jwtToken, {
-      expires: 1,
-    })
+    console.log(history)
     history.replace('/')
   }
 
@@ -36,22 +32,24 @@ class LoginForm extends Component {
   submitForm = async event => {
     event.preventDefault()
     const {email, password, } = this.state
-    const guestCart = localStorage.getItem('cart') || []
-    const userDetails = {email, password, guestCart}
+    const userDetails = {email, password}
     const url = `${process.env.REACT_APP_API_URL}/api/auth/login`
     const options = {
       method: 'POST',
       body: JSON.stringify(userDetails),
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json'
       }
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    if (response.ok === true) {
-      this.onSubmitSuccess(data)
+    console.log(data.success)
+    
+    if (data.success) {
+      this.onSubmitSuccess()
     } else {
-      this.onSubmitFailure(data)
+      this.onSubmitFailure(data.message)
     }
   }
 

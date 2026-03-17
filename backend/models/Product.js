@@ -4,12 +4,14 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        maxlength: 120
     },
     description: {
         type: String,
         required: true,
         trim: true,
+        maxlength: 2000
     },
     price: {
         type: Number,
@@ -18,7 +20,8 @@ const productSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-        required: true
+        required: true,
+        match: [/^https?:\/\/.+/, 'Image must be a valid URL']
     },
     category: {
         type: String,
@@ -34,6 +37,11 @@ const productSchema = new mongoose.Schema({
         required: true,
         min: 0
     }
+
+}, {
+        timestamps: true,
+        strict: true
+    
 })
 
 const Product = mongoose.model('Product', productSchema)

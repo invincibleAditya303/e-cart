@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie'
 import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 import {AiFillCloseCircle} from 'react-icons/ai'
 
@@ -14,28 +13,18 @@ const CartItem = props => (
         incrementCartItemQuantity,
         decrementCartItemQuantity,
       } = value
-      const jwtToken = Cookies.get('userDetails')
 
       const {cartItemDetails} = props
+      const {product, size, qty} = cartItemDetails
 
-      let product = {}
-      let _id, name, price, image, size, qty
-
-      if (jwtToken) {
-        ({product, size, qty} = cartItemDetails ?? {});
-        ({_id, name, price, image} = product ?? {});
-      } else {
-        ({_id, name, price, image, size, qty} = cartItemDetails ?? {});
-      }
-
-      console.log(_id)
+      const {_id, name, price, image} = product
 
       const onRemoveCartItem = () => {
-        removeCartItem(_id)
+        removeCartItem(_id, size)
       }
 
-      const onIncrementItemQuantity = () => incrementCartItemQuantity(cartItemDetails)
-      const onDecrementItemQuantity = () => decrementCartItemQuantity(cartItemDetails)
+      const onIncrementItemQuantity = () => incrementCartItemQuantity(product, size)
+      const onDecrementItemQuantity = () => decrementCartItemQuantity(product, size)
 
       return (
         <li className="cart-item">

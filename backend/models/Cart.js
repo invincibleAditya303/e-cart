@@ -8,7 +8,8 @@ const CartItemSchema = new mongoose.Schema({
     },
     size: {
         type: String,
-        required: true
+        required: true,
+        size: ['XS', 'S', 'M', 'L', 'XL', 'XXL']
     },
     qty: {
         type: Number,
@@ -25,7 +26,10 @@ const CartSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    items: [CartItemSchema],
-}, {timestamps: true})
+    items: {
+        type: [CartItemSchema],
+        validate: [arr => arr.length <= 50, 'Cart item limit exceeded']
+    },
+}, {timestamps: true, strict: true})
 
 module.exports = mongoose.model('Cart', CartSchema)

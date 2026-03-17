@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie'
-
 import CartContext from '../../context/CartContext'
 
 import './index.css'
@@ -11,29 +9,18 @@ const CartSummary = () => (
         cartList,
       } = value
 
-      const jwtToken = Cookies.get('userDetails')
-
       let orderAmount
 
-      if (jwtToken) {
-         orderAmount = cartList.map(
-          eachProduct => eachProduct.product.price * eachProduct.qty,
-        )
-      } else {
-        orderAmount = cartList.map(
-          eachProduct => eachProduct.price * eachProduct.qty
-        )
-      }
+      orderAmount = cartList.map(
+        eachProduct => eachProduct.product.price * eachProduct.qty,
+      )
 
-      console.log(orderAmount)
 
       const initialValue = 0
       const totalAmount = orderAmount.reduce(
         (accumulator, currentValue) => accumulator + currentValue,
         initialValue,
       )
-
-      console.log(totalAmount)
 
 
       const orderQuantity = cartList.length

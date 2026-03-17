@@ -1,6 +1,5 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import Cookies from 'js-cookie'
 import {BsPlusSquare, BsDashSquare} from 'react-icons/bs'
 
 import CartContext from '../../context/CartContext'
@@ -47,18 +46,17 @@ class ProductItemDetails extends Component {
     this.setState({
       apiStatus: apiStatusConstants.inProgress,
     })
-    const jwtToken = Cookies.get('userDetails')
+  
     const apiUrl = `${process.env.REACT_APP_API_URL}/api/products/${id}`
     const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
       method: 'GET',
+      credentials: 'include'
     }
     const response = await fetch(apiUrl, options)
     if (response.ok) {
       const fetchedData = await response.json()
-      const updatedData = this.getFormattedData(fetchedData)
+      
+      const updatedData = this.getFormattedData(fetchedData.product)
     
       this.setState({
         productData: updatedData,
@@ -102,7 +100,7 @@ class ProductItemDetails extends Component {
   }
 
   onIncrementQuantity = () => {
-    this.setState(prevState => ({quantity: prevState.qty + 1}))
+    this.setState(prevState => ({qty: prevState.qty + 1}))
   }
 
   onClickSize = selectedSize => {this.setState({size: selectedSize})}
