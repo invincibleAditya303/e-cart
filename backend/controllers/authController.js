@@ -104,7 +104,7 @@ exports.login = async (request, response) => {
         response.cookie('token', token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
-            sameSite: 'lax',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
             maxAge: 24 * 60 * 60 * 1000
         })
         
@@ -138,7 +138,7 @@ exports.logout = async (request, response) => {
     try {
         response.clearCookie('token', {
             httpOnly: true,
-            sameSite: 'lax',
+            sameSite: process.env.NODE_ENV === 'prodcution'? 'none' : 'lax',
             secure: process.env.NODE_ENV === 'production'
         })
 
